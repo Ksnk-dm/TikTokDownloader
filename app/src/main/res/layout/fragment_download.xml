@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_zy"
+        android:background="@color/primary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         android:tooltipText="@string/app_name"
@@ -30,7 +30,7 @@
         android:layout_marginEnd="8dp"
         app:startIconDrawable="@drawable/baseline_content_paste_go_24"
         android:background="@drawable/rounded_corners"
-        android:hint="text"
+        android:hint="set url"
         app:endIconContentDescription="test"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +38,13 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/urlEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="#00FFFFFF"
-            android:textColor="@color/white"
+            android:drawableStart="@drawable/baseline_content_copy_24"
+            android:textColor="@color/primary_dark"
             android:textColorHint="#00FAFAFA" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -51,13 +53,13 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="0dp"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/primary_zy"
-        android:drawableTint="@color/primary_zy"
-        android:foregroundTint="@color/primary_zy"
+        android:backgroundTint="@color/primary"
+        android:drawableTint="@color/primary"
+        android:foregroundTint="@color/primary"
         android:foregroundTintMode="add"
         android:text="Open in tiktok"
         app:iconTintMode="src_in"
@@ -78,21 +80,21 @@
         app:layout_constraintTop_toBottomOf="@+id/custom_end_icon">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonPaste"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:text="Paste"
             android:textColor="@color/white"
-            android:backgroundTint="@color/primary_zy"
+            android:backgroundTint="@color/primary"
             app:iconTint="@color/white" />
 
         <Button
-            android:id="@+id/buttonOpen"
+            android:id="@+id/buttonDownload"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary_zy"
+            android:backgroundTint="@color/primary"
             android:text="Download"
             android:textColor="@color/white" />
 
