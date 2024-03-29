@@ -1,5 +1,6 @@
 package com.ksnk.tiktokdownloader.ui.download
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -21,27 +22,38 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewBinding.buttonDownload.setOnClickListener {
-            if (viewBinding.urlEditText.text.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+
+        with(viewBinding) {
+            activity?.intent?.let { text ->
+                text.getStringExtra(Intent.EXTRA_TEXT)?.let {
+                    urlEditText.setText(it)
+                }
             }
-            isFileDownloaded = false
-            downloadViewModel.expandShortenedUrl(viewBinding.urlEditText.text.toString())
-            downloadViewModel.getExpandedUrlLiveData()
-                .observe(viewLifecycleOwner) { expandedUrl ->
-                    downloadViewModel.extractVideoIdFromUrl(expandedUrl)?.let { id ->
-                        if (!isFileDownloaded) {
-                            downloadViewModel.downloadVideo(id, requireContext())
-                            isFileDownloaded = true
+
+            buttonDownload.setOnClickListener {
+                if (urlEditText.text.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                isFileDownloaded = false
+                downloadViewModel.expandShortenedUrl(urlEditText.text.toString())
+                downloadViewModel.getExpandedUrlLiveData()
+                    .observe(viewLifecycleOwner) { expandedUrl ->
+                        downloadViewModel.extractVideoIdFromUrl(expandedUrl)?.let { id ->
+                            if (!isFileDownloaded) {
+                                downloadViewModel.downloadVideo(id, requireContext())
+                                isFileDownloaded = true
+                            }
                         }
                     }
-                }
-            viewBinding.urlEditText.setText("")
-        }
+                urlEditText.setText("")
+                downloadViewModel.openShareFragment()
+            }
 
-        viewBinding.buttonPaste.setOnClickListener {
-            viewBinding.urlEditText.setText(downloadViewModel.pasteFromClipboard(requireContext()))
+            buttonPaste.setOnClickListener {
+               urlEditText.setText(downloadViewModel.pasteFromClipboard(requireContext()))
+            }
         }
     }
 
@@ -57,6 +69,8 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onDownloadEvent(event: DownloadEvent) {
-        if (event.success) Toast.makeText(requireContext(), "done", Toast.LENGTH_LONG).show()
+        if (event.success) {
+
+        }
     }
 }

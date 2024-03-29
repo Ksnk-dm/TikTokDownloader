@@ -1,6 +1,7 @@
 package com.ksnk.tiktokdownloader
 
 import android.app.Application
+import com.ksnk.tiktokdownloader.di.module.appModule
 import com.ksnk.tiktokdownloader.di.module.networkModule
 import com.ksnk.tiktokdownloader.di.module.remoteDataSourceModule
 import com.ksnk.tiktokdownloader.di.module.repositoryModule
@@ -16,7 +17,7 @@ class DownloaderApplication: Application() {
         startKoin {
             androidContext(this@DownloaderApplication)
             androidLogger()
-            modules(networkModule, repositoryModule, viewModelModule, remoteDataSourceModule)
+            modules(networkModule, repositoryModule, viewModelModule, remoteDataSourceModule, appModule)
         }
     }
 }

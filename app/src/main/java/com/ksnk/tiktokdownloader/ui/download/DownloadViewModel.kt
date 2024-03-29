@@ -10,11 +10,12 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.ksnk.tiktokdownloader.BaseViewModel
+import com.ksnk.tiktokdownloader.Navigation
 import com.ksnk.tiktokdownloader.data.DownloadRepository
 import kotlinx.coroutines.launch
 import java.io.File
 
-class DownloadViewModel(private val repository: DownloadRepository, application: Application) : BaseViewModel(application) {
+class DownloadViewModel(private val repository: DownloadRepository, application: Application, private val navigationHelper: Navigation) : BaseViewModel(application) {
 
     private val expandedUrlLiveData = repository.getExpandedUrlLiveData()
     fun getExpandedUrlLiveData(): LiveData<String> {
@@ -71,4 +72,7 @@ class DownloadViewModel(private val repository: DownloadRepository, application:
         }
         return clipBoardText
     }
+
+    fun openShareFragment() =
+        navigationHelper.openShareFragmentFromDownload()
 }
