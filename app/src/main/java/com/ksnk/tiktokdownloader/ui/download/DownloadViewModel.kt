@@ -15,7 +15,7 @@ import com.ksnk.tiktokdownloader.data.DownloadRepository
 import kotlinx.coroutines.launch
 import java.io.File
 
-class DownloadViewModel(private val repository: DownloadRepository, application: Application, private val navigationHelper: Navigation) : BaseViewModel(application) {
+class DownloadViewModel(private val repository: DownloadRepository, application: Application) : BaseViewModel(application) {
 
     private val expandedUrlLiveData = repository.getExpandedUrlLiveData()
     fun getExpandedUrlLiveData(): LiveData<String> {
@@ -34,7 +34,7 @@ class DownloadViewModel(private val repository: DownloadRepository, application:
         return matchResult?.groupValues?.getOrNull(1)
     }
 
-   fun downloadVideo(id: String, context: Context) {
+   fun downloadVideo(id: String, context: Context): File? {
         val VIDEOS = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
             "TIKTOK VIDEO DOWNLOADER/VIDEOS"
@@ -57,9 +57,11 @@ class DownloadViewModel(private val repository: DownloadRepository, application:
             dm.enqueue(request)
 
             Toast.makeText(context, "Download started!", Toast.LENGTH_SHORT).show()
+            return File(VIDEOS, "$id.mp4")
         } catch (e: Exception) {
             Toast.makeText(context, "Download failed! ${e.message}", Toast.LENGTH_SHORT).show()
         }
+       return null
     }
 
     fun pasteFromClipboard(context: Context): String? {
@@ -73,6 +75,6 @@ class DownloadViewModel(private val repository: DownloadRepository, application:
         return clipBoardText
     }
 
-    fun openShareFragment() =
-        navigationHelper.openShareFragmentFromDownload()
+//    fun openShareFragment() =
+//        navigationHelper.openShareFragmentFromDownload()
 }

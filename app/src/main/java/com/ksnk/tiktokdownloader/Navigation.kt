@@ -1,9 +1,11 @@
 package com.ksnk.tiktokdownloader
 
-import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import com.ksnk.tiktokdownloader.ui.download.DownloadFragmentDirections
 
-class Navigation(private val navController: NavController) {
+class Navigation(private val navHostFragment: NavHostFragment) {
 
-    fun openShareFragmentFromDownload() =
-        navController.navigate(R.id.action_fragmentDownload_to_fragmentShare)
+    fun openShareFragmentFromDownload(fileUri: String, id: String) =
+        navHostFragment.findNavController().navigate(DownloadFragmentDirections.actionFragmentDownloadToFragmentShare(fileUri.toString(), id))
 }

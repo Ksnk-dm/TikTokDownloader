@@ -7,18 +7,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ksnk.tiktokdownloader.DownloadEvent
+import com.ksnk.tiktokdownloader.Navigation
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.databinding.FragmentDownloadBinding
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     private val viewBinding by viewBinding(FragmentDownloadBinding::bind)
     private val downloadViewModel: DownloadViewModel by inject()
     private var isFileDownloaded = false
+    private val navigator: Navigation by inject { parametersOf(requireParentFragment()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,13 +45,12 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
                     .observe(viewLifecycleOwner) { expandedUrl ->
                         downloadViewModel.extractVideoIdFromUrl(expandedUrl)?.let { id ->
                             if (!isFileDownloaded) {
-                                downloadViewModel.downloadVideo(id, requireContext())
+                                navigator.openShareFragmentFromDownload(downloadViewModel.downloadVideo(id, requireContext())?.absolutePath.toString(), id)
                                 isFileDownloaded = true
                             }
                         }
                     }
                 urlEditText.setText("")
-                downloadViewModel.openShareFragment()
             }
 
             buttonPaste.setOnClickListener {

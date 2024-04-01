@@ -3,17 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentDownload">
+    app:startDestination="@id/downloadFragment">
 
     <fragment
-        android:id="@+id/fragmentDownload"
+        android:id="@+id/downloadFragment"
         android:name="com.ksnk.tiktokdownloader.ui.download.DownloadFragment"
-        android:label="Fragment 1"
+        android:label="DownloadFragment"
         tools:layout="@layout/fragment_download" >
 
         <action
             android:id="@+id/action_fragmentDownload_to_fragmentShare"
-            app:destination="@id/fragmentShare" />
+            app:destination="@id/fragmentShare" >
+
+            <argument
+                android:name="your_key"
+                app:argType="string" />
+            <argument
+                android:name="id"
+                app:argType="string" />
+        </action>
     </fragment>
 
     <fragment

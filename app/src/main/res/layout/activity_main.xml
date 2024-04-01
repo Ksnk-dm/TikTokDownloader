@@ -7,10 +7,11 @@
     tools:context=".ui.main.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        app:defaultNavHost="true"
         android:id="@+id/fragmentContainerView"
-        android:name="com.ksnk.tiktokdownloader.ui.download.DownloadFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
