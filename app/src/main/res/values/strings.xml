@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Tik TokDownloader</string>
+    <string name="app_name" translatable="false">Tik TokDownloader</string>
+
+    <string name="set_url">Додайте лінку</string>
+    <string name="paste">Вставити</string>
+    <string name="download">Завантажити</string>
+    <string name="share">Поділитися</string>
+    <string name="send_file_as">Відправити файл через:</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="set_url">Add URL</string>
+    <string name="paste">Paste</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+    <string name="send_file_as">Send file as:</string>
+</resources>
