@@ -2,13 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/downloadFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/baseline_arrow_downward_24"
-        android:title="Download" />
+        android:title="@string/download" />
     <item
+        android:id="@+id/historyFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:icon="@drawable/baseline_archive_24"
-        android:title="history" />
+        android:title="@string/history" />
 </menu>

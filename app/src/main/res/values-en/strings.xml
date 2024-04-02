@@ -5,4 +5,7 @@
     <string name="download">Download</string>
     <string name="share">Share</string>
     <string name="send_file_as">Send file as:</string>
+    <string name="history">History</string>
+    <string name="empty_url">Url is empty</string>
+    <string name="bad_link">Url not support</string>
 </resources>

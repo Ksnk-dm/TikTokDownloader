@@ -48,6 +48,7 @@ dependencies {
     val coroutine_version = "1.7.3"
     val room_version = "2.6.1"
     val koin_version = "3.4.0"
+    val navigation_version = "2.7.7"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -67,7 +68,6 @@ dependencies {
 
     //Koin
     implementation("io.insert-koin:koin-android:$koin_version")
-
 
     //Lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
@@ -99,8 +99,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigation_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigation_version")
 
     implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
 

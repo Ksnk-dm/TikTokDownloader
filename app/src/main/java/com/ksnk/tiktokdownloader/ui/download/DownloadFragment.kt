@@ -21,7 +21,7 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
     private val viewBinding by viewBinding(FragmentDownloadBinding::bind)
     private val viewModel: DownloadViewModel by inject()
     private var isFileDownloaded = false
-    private val navigator: Navigation by inject { parametersOf(requireParentFragment()) }
+    private val navigation: Navigation by inject { parametersOf(requireParentFragment()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,15 +35,22 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
 
             buttonDownload.setOnClickListener {
                 if (urlEditText.text.isNullOrEmpty()) {
-                    Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getText(R.string.empty_url), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
+                }
+                urlEditText.text?.let { text ->
+                    if (!text.contains(CONTAINS, true)) {
+                        Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
+                        urlEditText.setText("")
+                        return@setOnClickListener
+                    }
                 }
                 isFileDownloaded = false
                 viewModel.expandShortenedUrl(urlEditText.text.toString())
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
-                            navigator.openShareFragmentFromDownload(
+                            navigation.openShareFragmentFromDownload(
                                 viewModel.downloadVideo(
                                     fileEntity,
                                     requireContext()
@@ -76,5 +83,9 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
         if (event.success) {
 
         }
+    }
+
+    companion object {
+        private const val CONTAINS = "tiktok"
     }
 }
