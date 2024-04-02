@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Tik TokDownloader</string>
+    <string name="app_name" translatable="false">Video Downloader</string>
 
     <string name="set_url">Додайте лінку</string>
     <string name="paste">Вставити</string>
