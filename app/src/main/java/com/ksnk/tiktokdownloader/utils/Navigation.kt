@@ -1,5 +1,6 @@
 package com.ksnk.tiktokdownloader.utils
 
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
@@ -12,4 +13,7 @@ class Navigation(private val navHostFragment: NavHostFragment) {
 
     fun popBackStack()=
         navHostFragment.findNavController().popBackStack()
+
+    fun getNavController(): NavController =
+        navHostFragment.findNavController()
 }
