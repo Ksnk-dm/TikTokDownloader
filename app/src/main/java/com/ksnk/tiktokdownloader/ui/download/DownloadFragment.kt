@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.ksnk.tiktokdownloader.DownloadEvent
-import com.ksnk.tiktokdownloader.Navigation
+import com.ksnk.tiktokdownloader.events.DownloadEvent
+import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.databinding.FragmentDownloadBinding
 import org.greenrobot.eventbus.EventBus

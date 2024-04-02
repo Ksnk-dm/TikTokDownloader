@@ -1,9 +1,10 @@
-package com.ksnk.tiktokdownloader
+package com.ksnk.tiktokdownloader.receiver
 
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.ksnk.tiktokdownloader.events.DownloadEvent
 import org.greenrobot.eventbus.EventBus
 
 class DownloadReceiver : BroadcastReceiver() {

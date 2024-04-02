@@ -10,14 +10,20 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
 
-class DownloaderApplication: Application() {
+class DownloaderApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@DownloaderApplication)
             androidLogger()
-            modules(networkModule, repositoryModule, viewModelModule, remoteDataSourceModule, appModule)
+            modules(
+                networkModule,
+                repositoryModule,
+                viewModelModule,
+                remoteDataSourceModule,
+                appModule
+            )
         }
     }
 }
