@@ -1,9 +1,7 @@
 package com.ksnk.tiktokdownloader.ui.main
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.ksnk.tiktokdownloader.R
 
 class MainActivity : AppCompatActivity() {

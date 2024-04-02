@@ -2,14 +2,12 @@ package com.ksnk.tiktokdownloader.ui.share
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
-import com.google.gson.Gson
-import com.ksnk.tiktokdownloader.Navigation
+import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
 import com.ksnk.tiktokdownloader.databinding.FragmentShareBinding
@@ -27,15 +25,15 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
 
         with(viewBinding) {
 
-            val jsonString = arguments?.getParcelable<FileEntity>("id")
+            val jsonString = arguments?.getParcelable<FileEntity>(KEY_FILE_ENTITY)
 
             Glide.with(requireContext())
-                .load("${jsonString?.data?.cover}.webp")
+                .load("${jsonString?.data?.cover}$COVER_FORMAT")
                 .into(imageView)
 
             textViewTitle.text = jsonString?.data?.title
             buttonShare.setOnClickListener {
-                arguments?.getString("your_key")?.let {
+                arguments?.getString(KEY_FILE_URI)?.let {
                     shareFile(it)
                 }
             }
@@ -48,14 +46,23 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
 
     private fun shareFile(fileUri: String) {
         val file = File(fileUri)
-        val uri = FileProvider.getUriForFile(requireContext(), "com.ksnk.tiktokdownloader.fileprovider", file)
+        val uri = FileProvider.getUriForFile(requireContext(), "${context?.packageName}$FILE_PROVIDER", file)
 
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_STREAM, uri)
-            type = "video/*"
+            type = SHARE_TYPE
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
         startActivity(Intent.createChooser(shareIntent, "Поделиться файлом через..."))
+    }
+
+
+    companion object {
+        private const val COVER_FORMAT = ".webp"
+        private const val KEY_FILE_ENTITY = "fileEntity"
+        private const val KEY_FILE_URI = "fileUri"
+        private const val SHARE_TYPE = "video/*"
+        private const val FILE_PROVIDER = ".fileprovider"
     }
 }

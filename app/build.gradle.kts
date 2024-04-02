@@ -105,5 +105,6 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
 
     implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.jakewharton.timber:timber:5.0.1")
 
 }

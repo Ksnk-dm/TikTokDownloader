@@ -1,4 +1,4 @@
-package com.ksnk.tiktokdownloader
+package com.ksnk.tiktokdownloader.utils
 
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController

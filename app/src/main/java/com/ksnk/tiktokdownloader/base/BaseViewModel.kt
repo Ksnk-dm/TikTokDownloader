@@ -1,4 +1,4 @@
-package com.ksnk.tiktokdownloader
+package com.ksnk.tiktokdownloader.base
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

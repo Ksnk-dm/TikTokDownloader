@@ -16,10 +16,10 @@
             app:destination="@id/fragmentShare" >
 
             <argument
-                android:name="your_key"
+                android:name="fileUri"
                 app:argType="string" />
             <argument
-                android:name="id"
+                android:name="fileEntity"
                 app:argType="com.ksnk.tiktokdownloader.data.entity.FileEntity" />
         </action>
     </fragment>

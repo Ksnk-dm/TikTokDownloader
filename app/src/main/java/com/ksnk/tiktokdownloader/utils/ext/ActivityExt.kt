@@ -1,7 +1,8 @@
-package com.ksnk.tiktokdownloader
+package com.ksnk.tiktokdownloader.utils.ext
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import com.ksnk.tiktokdownloader.R
 
 fun AppCompatActivity.setupActivity(activity: AppCompatActivity) {
     activity.supportFragmentManager.findFragmentById(R.id.fragmentContainerView) ?: run {
