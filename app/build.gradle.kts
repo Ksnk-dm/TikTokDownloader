@@ -102,6 +102,8 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
-    implementation("io.insert-koin:koin-androidx-navigation:$koin_version") // или более новая версия
+    implementation("io.insert-koin:koin-androidx-navigation:$koin_version")
+
+    implementation ("com.google.code.gson:gson:2.10.1")
 
 }

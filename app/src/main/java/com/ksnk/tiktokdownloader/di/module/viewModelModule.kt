@@ -7,6 +7,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-  factory { (navHostFragment: NavHostFragment) -> Navigation(navHostFragment) }
+    factory { (navHostFragment: NavHostFragment) -> Navigation(navHostFragment) }
     viewModel { DownloadViewModel(get(), get()) }
 }

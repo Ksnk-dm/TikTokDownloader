@@ -1,5 +1,9 @@
 package com.ksnk.tiktokdownloader.ui.share
 
-class ShareViewModel {
+import com.google.gson.Gson
+import com.ksnk.tiktokdownloader.BaseViewModel
+import com.ksnk.tiktokdownloader.data.repository.DownloadRepository
+
+class ShareViewModel() {
 
 }

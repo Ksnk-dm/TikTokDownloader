@@ -19,7 +19,7 @@ import org.koin.core.parameter.parametersOf
 class DownloadFragment : Fragment(R.layout.fragment_download) {
 
     private val viewBinding by viewBinding(FragmentDownloadBinding::bind)
-    private val downloadViewModel: DownloadViewModel by inject()
+    private val viewModel: DownloadViewModel by inject()
     private var isFileDownloaded = false
     private val navigator: Navigation by inject { parametersOf(requireParentFragment()) }
 
@@ -38,23 +38,25 @@ class DownloadFragment : Fragment(R.layout.fragment_download) {
                     Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-
                 isFileDownloaded = false
-                downloadViewModel.expandShortenedUrl(urlEditText.text.toString())
-                downloadViewModel.getExpandedUrlLiveData()
-                    .observe(viewLifecycleOwner) { expandedUrl ->
-                        downloadViewModel.extractVideoIdFromUrl(expandedUrl)?.let { id ->
-                            if (!isFileDownloaded) {
-                                navigator.openShareFragmentFromDownload(downloadViewModel.downloadVideo(id, requireContext())?.absolutePath.toString(), id)
-                                isFileDownloaded = true
-                            }
+                viewModel.expandShortenedUrl(urlEditText.text.toString())
+                viewModel.getExpandedUrlLiveData()
+                    .observe(viewLifecycleOwner) { fileEntity ->
+                        if (!isFileDownloaded) {
+                            navigator.openShareFragmentFromDownload(
+                                viewModel.downloadVideo(
+                                    fileEntity,
+                                    requireContext()
+                                )?.absolutePath.toString(), fileEntity
+                            )
+                            isFileDownloaded = true
                         }
                     }
                 urlEditText.setText("")
             }
 
             buttonPaste.setOnClickListener {
-               urlEditText.setText(downloadViewModel.pasteFromClipboard(requireContext()))
+                urlEditText.setText(viewModel.pasteFromClipboard(requireContext()))
             }
         }
     }

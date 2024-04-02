@@ -20,7 +20,7 @@
                 app:argType="string" />
             <argument
                 android:name="id"
-                app:argType="string" />
+                app:argType="com.ksnk.tiktokdownloader.data.entity.FileEntity" />
         </action>
     </fragment>
 
