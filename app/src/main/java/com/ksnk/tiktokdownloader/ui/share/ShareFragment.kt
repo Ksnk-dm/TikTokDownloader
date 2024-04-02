@@ -54,9 +54,8 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
             type = SHARE_TYPE
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        startActivity(Intent.createChooser(shareIntent, "Поделиться файлом через..."))
+        startActivity(Intent.createChooser(shareIntent, context?.getString(R.string.send_file_as)))
     }
-
 
     companion object {
         private const val COVER_FORMAT = ".webp"
