@@ -18,7 +18,7 @@ import java.io.File
 class ShareFragment : Fragment(R.layout.fragment_share) {
 
     private val viewBinding by viewBinding(FragmentShareBinding::bind)
-    private val navigator: Navigation by inject { parametersOf(requireParentFragment()) }
+    private val navigation: Navigation by inject { parametersOf(requireParentFragment()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,7 +39,7 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
             }
 
             toolbar.setNavigationOnClickListener {
-                navigator.popBackStack()
+                navigation.popBackStack()
             }
         }
     }

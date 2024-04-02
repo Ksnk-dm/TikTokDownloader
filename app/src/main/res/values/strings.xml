@@ -6,4 +6,7 @@
     <string name="download">Завантажити</string>
     <string name="share">Поділитися</string>
     <string name="send_file_as">Відправити файл через:</string>
+    <string name="history">Історія</string>
+    <string name="empty_url">Введіть лінку для завантаження</string>
+    <string name="bad_link">Лінка не підримується</string>
 </resources>
