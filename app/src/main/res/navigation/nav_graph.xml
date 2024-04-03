@@ -9,14 +9,14 @@
         android:id="@+id/downloadFragment"
         android:name="com.ksnk.tiktokdownloader.ui.download.DownloadFragment"
         android:label="DownloadFragment"
-        tools:layout="@layout/fragment_download" >
+        tools:layout="@layout/fragment_download">
 
         <action
             android:id="@+id/action_fragmentDownload_to_fragmentShare"
-            app:destination="@id/shareFragment" >
+            app:destination="@id/shareFragment">
 
             <argument
-                android:name="fileUri"
+                android:name="filePath"
                 app:argType="string" />
             <argument
                 android:name="fileEntity"
@@ -31,13 +31,29 @@
         android:id="@+id/shareFragment"
         android:name="com.ksnk.tiktokdownloader.ui.share.ShareFragment"
         android:label="Fragment 2"
-        tools:layout="@layout/fragment_share" >
-    </fragment>
+        tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.ksnk.tiktokdownloader.ui.history.HistoryFragment"
         android:label="Fragment History"
-        tools:layout="@layout/fragment_history" >
+        tools:layout="@layout/fragment_history">
+        <action
+            android:id="@+id/action_historyFragment_to_playerFragment"
+            app:destination="@id/playerFragment">
+            <argument
+                android:name="fileUri"
+                app:argType="string" />
+
+            <argument
+                android:name="fileName"
+                app:argType="string" />
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.ksnk.tiktokdownloader.ui.player.PlayerFragment"
+        android:label="Fragment Player"
+        tools:layout="@layout/fragment_player" />
 </navigation>

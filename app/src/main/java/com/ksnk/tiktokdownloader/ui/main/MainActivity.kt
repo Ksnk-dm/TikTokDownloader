@@ -13,7 +13,7 @@ import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewBinding by viewBinding(ActivityMainBinding::bind)
+    val viewBinding by viewBinding(ActivityMainBinding::bind)
     private val navigation: Navigation by inject { parametersOf(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
