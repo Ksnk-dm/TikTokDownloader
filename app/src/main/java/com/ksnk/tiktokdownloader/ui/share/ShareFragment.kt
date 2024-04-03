@@ -9,13 +9,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
+import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
 import com.ksnk.tiktokdownloader.databinding.FragmentShareBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.io.File
 
-class ShareFragment : Fragment(R.layout.fragment_share) {
+class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
     private val viewBinding by viewBinding(FragmentShareBinding::bind)
     private val navigation: Navigation by inject { parametersOf(requireParentFragment()) }

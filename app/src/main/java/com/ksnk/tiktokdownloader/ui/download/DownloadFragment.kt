@@ -9,6 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ksnk.tiktokdownloader.events.DownloadEvent
 import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
+import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.databinding.FragmentDownloadBinding
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -16,7 +17,7 @@ import org.greenrobot.eventbus.ThreadMode
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class DownloadFragment : Fragment(R.layout.fragment_download) {
+class DownloadFragment : BaseFragment(R.layout.fragment_download) {
 
     private val viewBinding by viewBinding(FragmentDownloadBinding::bind)
     private val viewModel: DownloadViewModel by inject()
