@@ -9,13 +9,16 @@ data class FileDataEntity(
     val title: String?,
     val cover: String?,
     @SerializedName("play")
-    val playUrl: String?
+    val playUrl: String?,
+    @SerializedName("author")
+    val author: AuthorEntity?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readParcelable(AuthorEntity::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -23,15 +26,21 @@ data class FileDataEntity(
         parcel.writeString(title)
         parcel.writeString(cover)
         parcel.writeString(playUrl)
+        parcel.writeParcelable(author, flags)
     }
 
-    override fun describeContents(): Int = 0
+    override fun describeContents(): Int {
+        return 0
+    }
 
     companion object CREATOR : Parcelable.Creator<FileDataEntity> {
-        override fun createFromParcel(parcel: Parcel): FileDataEntity =
-            FileDataEntity(parcel)
+        override fun createFromParcel(parcel: Parcel): FileDataEntity {
+            return FileDataEntity(parcel)
+        }
 
-        override fun newArray(size: Int): Array<FileDataEntity?> =
-            arrayOfNulls(size)
+        override fun newArray(size: Int): Array<FileDataEntity?> {
+            return arrayOfNulls(size)
+        }
     }
+
 }

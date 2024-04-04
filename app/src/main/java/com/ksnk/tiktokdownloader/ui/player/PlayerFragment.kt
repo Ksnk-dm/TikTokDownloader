@@ -20,7 +20,7 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
 
     private val viewBinding by viewBinding(FragmentPlayerBinding::bind)
     private var player: ExoPlayer? = null
-    var isAllFabsVisible: Boolean = false
+    private var isAllFabsVisible: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

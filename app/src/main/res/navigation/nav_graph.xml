@@ -31,7 +31,15 @@
         android:id="@+id/shareFragment"
         android:name="com.ksnk.tiktokdownloader.ui.share.ShareFragment"
         android:label="Fragment 2"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_share">
+        <action
+            android:id="@+id/action_shareFragment_to_playerFragment"
+            app:destination="@id/playerFragment">
+            <argument
+                android:name="fileUri"
+                app:argType="string" />
+        </action>
+    </fragment>
 
     <fragment
         android:id="@+id/historyFragment"

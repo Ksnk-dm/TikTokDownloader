@@ -29,6 +29,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
                 .into(imageView)
 
             textViewTitle.text = jsonString?.data?.title
+            textViewAuthor.text = jsonString?.data?.author?.nickName
             buttonShare.setOnClickListener {
                 arguments?.getString(KEY_FILE_PATH)?.let {
                     shareFile(it)
@@ -37,6 +38,14 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
             toolbar.setNavigationOnClickListener {
                 navigation.popBackStack()
+            }
+
+            buttonBack.setOnClickListener {
+                navigation.popBackStack()
+            }
+
+            buttonPlay.setOnClickListener {
+                navigation.openPlayerFragmentFromShare(jsonString?.data?.playUrl.toString())
             }
         }
     }
