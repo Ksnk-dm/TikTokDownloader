@@ -13,6 +13,9 @@ import androidx.lifecycle.viewModelScope
 import com.ksnk.tiktokdownloader.base.BaseViewModel
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
 import com.ksnk.tiktokdownloader.data.repository.DownloadRepository
+import com.ksnk.tiktokdownloader.ui.download.DownloadFragment.Companion.DOWNLOAD_VIDEOS_DIRECTORY
+import com.ksnk.tiktokdownloader.ui.download.DownloadFragment.Companion.FILE_FORMAT
+import com.ksnk.tiktokdownloader.ui.download.DownloadFragment.Companion.MIME_TYPE
 import kotlinx.coroutines.launch
 import java.io.File
 
@@ -62,16 +65,5 @@ class DownloadViewModel(
             clipBoardText = item?.text.toString()
         }
         return clipBoardText
-    }
-
-    companion object {
-        val DOWNLOAD_VIDEOS_DIRECTORY = File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-            "TIKTOK DOWNLOADS/VIDEOS"
-        )
-
-        private const val MIME_TYPE = "video/*"
-        private const val FILE_FORMAT = ".mp4"
-
     }
 }

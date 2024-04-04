@@ -2,6 +2,7 @@ package com.ksnk.tiktokdownloader.ui.share
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -9,16 +10,16 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
+import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
 import com.ksnk.tiktokdownloader.databinding.FragmentShareBinding
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.io.File
 
-class ShareFragment : Fragment(R.layout.fragment_share) {
+class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
     private val viewBinding by viewBinding(FragmentShareBinding::bind)
-    private val navigation: Navigation by inject { parametersOf(requireParentFragment()) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +34,9 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
 
             textViewTitle.text = jsonString?.data?.title
             buttonShare.setOnClickListener {
+                Log.d("MESSAGE::: ", "it")
                 arguments?.getString(KEY_FILE_URI)?.let {
+                    Log.d("MESSAGE::: ", it)
                     shareFile(it)
                 }
             }
@@ -60,8 +63,8 @@ class ShareFragment : Fragment(R.layout.fragment_share) {
     companion object {
         private const val COVER_FORMAT = ".webp"
         private const val KEY_FILE_ENTITY = "fileEntity"
-        private const val KEY_FILE_URI = "fileUri"
-        private const val SHARE_TYPE = "video/*"
-        private const val FILE_PROVIDER = ".fileprovider"
+        const val KEY_FILE_URI = "filePath"
+        const val SHARE_TYPE = "video/*"
+        const val FILE_PROVIDER = ".fileprovider"
     }
 }
