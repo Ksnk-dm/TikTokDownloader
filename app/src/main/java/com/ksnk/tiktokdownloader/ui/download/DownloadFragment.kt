@@ -31,24 +31,24 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         with(viewBinding) {
             activity?.intent?.let { text ->
                 text.getStringExtra(Intent.EXTRA_TEXT)?.let {
-                    urlEditText.setText(it)
+                    customEndIcon.setText(it)
                 }
             }
 
             buttonDownload.setOnClickListener {
-                if (urlEditText.text.isNullOrEmpty()) {
+                if (customEndIcon.text.isNullOrEmpty()) {
                     Toast.makeText(requireContext(), getText(R.string.empty_url), Toast.LENGTH_SHORT).show()
                     return@setOnClickListener
                 }
-                urlEditText.text?.let { text ->
+                customEndIcon.text?.let { text ->
                     if (!text.contains(CONTAINS, true)) {
                         Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
-                        urlEditText.setText("")
+                        customEndIcon.setText("")
                         return@setOnClickListener
                     }
                 }
                 isFileDownloaded = false
-                viewModel.expandShortenedUrl(urlEditText.text.toString())
+                viewModel.expandShortenedUrl(customEndIcon.text.toString())
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
@@ -61,11 +61,11 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                             isFileDownloaded = true
                         }
                     }
-                urlEditText.setText("")
+                customEndIcon.setText("")
             }
 
             buttonPaste.setOnClickListener {
-                urlEditText.setText(viewModel.pasteFromClipboard(requireContext()))
+                customEndIcon.setText(viewModel.pasteFromClipboard(requireContext()))
             }
         }
     }

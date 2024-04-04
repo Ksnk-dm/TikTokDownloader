@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
+        android:background="@color/primary_bg"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,33 +19,47 @@
         app:title="@string/app_name"
         app:titleTextColor="#FFFFFF" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/toolbar"
+        android:background="#403F3F"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <EditText
         android:id="@+id/custom_end_icon"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="240dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners"
+        android:drawableEnd="@drawable/copy_svgrepo_com"
         android:hint="@string/set_url"
-        app:endIconContentDescription="test"
-        app:endIconMode="custom"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="@color/white"
+        android:textColorHint="#B1B0B0"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDownload"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:startIconDrawable="@drawable/baseline_content_paste_go_24">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/urlEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#00FFFFFF"
-            android:drawableStart="@drawable/baseline_content_copy_24"
-            android:textColor="@color/primary_dark"
-            android:textColorHint="#00FAFAFA" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonDownload"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/primary"
+        android:text="@string/download"
+        android:textColor="@color/white"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:shapeAppearanceOverlay="@style/one_rounded" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
@@ -68,13 +82,13 @@
             android:textColor="@color/white"
             app:iconTint="@color/white" />
 
-        <Button
-            android:id="@+id/buttonDownload"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
-            android:text="@string/download"
-            android:textColor="@color/white" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <View
+        android:id="@+id/dividerBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/toolbar"
+        android:background="#403F3F"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

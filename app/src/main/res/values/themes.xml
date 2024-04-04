@@ -1,8 +1,8 @@
 <resources>
     <style name="Base.Theme.TikTokDownloader" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="statusBarBackground">@color/primary</item>
-        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="colorPrimary">@color/primary_bg</item>
+        <item name="statusBarBackground">@color/primary_bg</item>
+        <item name="android:navigationBarColor">@color/primary_bg</item>
     </style>
 
     <style name="Theme.TikTokDownloader" parent="Base.Theme.TikTokDownloader" />
@@ -15,5 +15,10 @@
     <style name="circleImageStyle" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">5dp</item>
+    </style>
+
+    <style name="one_rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
     </style>
 </resources>
