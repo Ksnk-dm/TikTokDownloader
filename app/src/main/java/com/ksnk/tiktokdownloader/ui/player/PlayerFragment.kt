@@ -2,7 +2,6 @@ package com.ksnk.tiktokdownloader.ui.player
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.FileProvider
 import androidx.media3.common.MediaItem
@@ -13,7 +12,6 @@ import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.databinding.FragmentPlayerBinding
 import com.ksnk.tiktokdownloader.ui.download.DownloadFragment.Companion.DOWNLOAD_VIDEOS_DIRECTORY
-import com.ksnk.tiktokdownloader.ui.download.DownloadViewModel
 import com.ksnk.tiktokdownloader.ui.share.ShareFragment
 import java.io.File
 
@@ -22,7 +20,7 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
 
     private val viewBinding by viewBinding(FragmentPlayerBinding::bind)
     private var player: ExoPlayer? = null
-    var isAllFabsVisible: Boolean = false
+    private var isAllFabsVisible: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

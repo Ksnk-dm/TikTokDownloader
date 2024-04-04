@@ -9,4 +9,6 @@
     <string name="history">Історія</string>
     <string name="empty_url">Введіть лінку для завантаження</string>
     <string name="bad_link">Лінка не підримується</string>
+    <string name="home">Головна</string>
+    <string name="open">Відкрити посилання</string>
 </resources>

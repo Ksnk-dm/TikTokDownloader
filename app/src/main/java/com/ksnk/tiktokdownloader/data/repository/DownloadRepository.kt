@@ -1,5 +1,6 @@
 package com.ksnk.tiktokdownloader.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
@@ -20,6 +21,8 @@ class DownloadRepository(private val remoteDataSource: RemoteDataSource, private
     suspend fun getApiData(shortenedUrl: String) = withContext(Dispatchers.IO) {
         runCatching {
             val jsonData = remoteDataSource.responseBody(shortenedUrl).body()?.string()
+
+            Log.d("MESSAGE::: ", jsonData.toString())
             val fileEntity = gson.fromJson(jsonData, FileEntity::class.java)
 
             fileEntityMutableLiveData.postValue(fileEntity)

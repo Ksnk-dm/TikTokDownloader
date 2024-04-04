@@ -1,8 +1,8 @@
 <resources>
     <style name="Base.Theme.TikTokDownloader" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="statusBarBackground">@color/primary</item>
-        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="colorPrimary">@color/primary_bg</item>
+        <item name="statusBarBackground">@color/primary_bg</item>
+        <item name="android:navigationBarColor">@color/primary_bg</item>
     </style>
 
     <style name="Theme.TikTokDownloader" parent="Base.Theme.TikTokDownloader" />
@@ -15,5 +15,26 @@
     <style name="circleImageStyle" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">5dp</item>
+    </style>
+
+    <style name="one_rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.IconOnly" >
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.Button.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>

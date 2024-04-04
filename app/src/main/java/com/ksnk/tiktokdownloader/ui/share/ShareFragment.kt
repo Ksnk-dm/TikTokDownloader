@@ -5,16 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.content.FileProvider
-import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
-import com.ksnk.tiktokdownloader.utils.Navigation
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.data.entity.FileEntity
 import com.ksnk.tiktokdownloader.databinding.FragmentShareBinding
-import org.koin.android.ext.android.inject
-import org.koin.core.parameter.parametersOf
 import java.io.File
 
 class ShareFragment : BaseFragment(R.layout.fragment_share) {
@@ -23,7 +19,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        hideBottomNav()
         with(viewBinding) {
 
             val jsonString = arguments?.getParcelable<FileEntity>(KEY_FILE_ENTITY)
@@ -33,10 +29,9 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
                 .into(imageView)
 
             textViewTitle.text = jsonString?.data?.title
+            textViewAuthor.text = jsonString?.data?.author?.nickName
             buttonShare.setOnClickListener {
-                Log.d("MESSAGE::: ", "it")
-                arguments?.getString(KEY_FILE_URI)?.let {
-                    Log.d("MESSAGE::: ", it)
+                arguments?.getString(KEY_FILE_PATH)?.let {
                     shareFile(it)
                 }
             }
@@ -44,12 +39,24 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
             toolbar.setNavigationOnClickListener {
                 navigation.popBackStack()
             }
+
+            buttonBack.setOnClickListener {
+                navigation.popBackStack()
+            }
+
+            buttonPlay.setOnClickListener {
+                navigation.openPlayerFragmentFromShare(jsonString?.data?.playUrl.toString())
+            }
         }
     }
 
     private fun shareFile(fileUri: String) {
         val file = File(fileUri)
-        val uri = FileProvider.getUriForFile(requireContext(), "${context?.packageName}$FILE_PROVIDER", file)
+        val uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${context?.packageName}$FILE_PROVIDER",
+            file
+        )
 
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
@@ -63,7 +70,8 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
     companion object {
         private const val COVER_FORMAT = ".webp"
         private const val KEY_FILE_ENTITY = "fileEntity"
-        const val KEY_FILE_URI = "filePath"
+        const val KEY_FILE_PATH = "filePath"
+        const val KEY_FILE_URI = "fileUri"
         const val SHARE_TYPE = "video/*"
         const val FILE_PROVIDER = ".fileprovider"
     }
