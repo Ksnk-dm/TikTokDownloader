@@ -1,7 +1,8 @@
 package com.ksnk.tiktokdownloader.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -15,6 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     val viewBinding by viewBinding(ActivityMainBinding::bind)
     private val navigation: Navigation by inject { parametersOf(supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment) }
+    private val onBackPressed = onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {}
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

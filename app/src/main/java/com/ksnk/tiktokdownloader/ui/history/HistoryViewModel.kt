@@ -5,22 +5,21 @@ import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import com.ksnk.tiktokdownloader.base.BaseViewModel
+import com.ksnk.tiktokdownloader.data.model.Media
 import com.ksnk.tiktokdownloader.data.repository.DownloadRepository
-import com.ksnk.tiktokdownloader.ui.MediaModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.internal.concurrent.formatDuration
 
 class HistoryViewModel(
     private val repository: DownloadRepository,
     application: Application
 ) : BaseViewModel(application) {
 
-    suspend fun getVideosFromFolder(context: Context, folderPath: String): ArrayList<MediaModel> = withContext(
-        Dispatchers.IO) {
-        val videoList: ArrayList<MediaModel> = ArrayList()
+    suspend fun getVideosFromFolder(context: Context, folderPath: String): ArrayList<Media> = withContext(
+        Dispatchers.IO
+    ) {
+        val videoList: ArrayList<Media> = ArrayList()
         val projection = arrayOf(
             MediaStore.Video.Media._ID,
             MediaStore.Video.Media.DISPLAY_NAME,
@@ -47,7 +46,7 @@ class HistoryViewModel(
                         MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
                         videoId
                     )
-                    videoList.add(MediaModel(displayName, contentUri, formatDuration(duration), formatSize(size)))
+                    videoList.add(Media(displayName, contentUri, formatDuration(duration), formatSize(size)))
                 }
             }
         return@withContext videoList
@@ -65,10 +64,7 @@ class HistoryViewModel(
         val fileSizeInKB = size / 1024
         val fileSizeInMB = fileSizeInKB / 1024
 
-        return if (fileSizeInMB > 0) {
-            String.format("%d MB", fileSizeInMB)
-        } else {
-            String.format("%d KB", fileSizeInKB)
-        }
+        return if (fileSizeInMB > 0) String.format("%d MB", fileSizeInMB)
+        else String.format("%d KB", fileSizeInKB)
     }
 }

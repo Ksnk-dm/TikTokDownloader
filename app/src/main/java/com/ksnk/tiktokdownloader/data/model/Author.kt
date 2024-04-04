@@ -1,10 +1,10 @@
-package com.ksnk.tiktokdownloader.data.entity
+package com.ksnk.tiktokdownloader.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-data class AuthorEntity(
+data class Author(
     @SerializedName("nickname")
     val nickName: String?
 ): Parcelable {
@@ -19,12 +19,12 @@ data class AuthorEntity(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<AuthorEntity> {
-        override fun createFromParcel(parcel: Parcel): AuthorEntity {
-            return AuthorEntity(parcel)
+    companion object CREATOR : Parcelable.Creator<Author> {
+        override fun createFromParcel(parcel: Parcel): Author {
+            return Author(parcel)
         }
 
-        override fun newArray(size: Int): Array<AuthorEntity?> {
+        override fun newArray(size: Int): Array<Author?> {
             return arrayOfNulls(size)
         }
     }
