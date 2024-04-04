@@ -8,4 +8,6 @@
     <string name="history">History</string>
     <string name="empty_url">Url is empty</string>
     <string name="bad_link">Url not support</string>
+    <string name="home">Home</string>
+    <string name="open">Open link</string>
 </resources>
