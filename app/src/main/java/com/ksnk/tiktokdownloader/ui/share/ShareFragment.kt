@@ -19,7 +19,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        hideBottomNav()
         with(viewBinding) {
 
             val jsonString = arguments?.getParcelable<FileEntity>(KEY_FILE_ENTITY)
@@ -30,9 +30,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
             textViewTitle.text = jsonString?.data?.title
             buttonShare.setOnClickListener {
-                Log.d("MESSAGE::: ", "it")
                 arguments?.getString(KEY_FILE_PATH)?.let {
-                    Log.d("MESSAGE::: ", it)
                     shareFile(it)
                 }
             }
@@ -45,7 +43,11 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
 
     private fun shareFile(fileUri: String) {
         val file = File(fileUri)
-        val uri = FileProvider.getUriForFile(requireContext(), "${context?.packageName}$FILE_PROVIDER", file)
+        val uri = FileProvider.getUriForFile(
+            requireContext(),
+            "${context?.packageName}$FILE_PROVIDER",
+            file
+        )
 
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND

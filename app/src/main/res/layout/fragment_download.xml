@@ -29,58 +29,75 @@
 
     <EditText
         android:id="@+id/custom_end_icon"
-        android:layout_width="240dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners"
-        android:drawableEnd="@drawable/copy_svgrepo_com"
         android:hint="@string/set_url"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:textColor="@color/white"
         android:textColorHint="#B1B0B0"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonDownload"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonDownload"
+
+        android:id="@+id/buttonOpen"
         android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners"
         android:backgroundTint="@color/primary"
-        android:text="@string/download"
+        android:text="Open Link"
         android:textColor="@color/white"
-        app:backgroundTint="@null"
+        app:backgroundTint="#2d2f33"
+        app:icon="@drawable/tiktok_svgrepo_com"
+        app:iconGravity="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButton"
         app:shapeAppearanceOverlay="@style/one_rounded" />
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_end_icon">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonPaste"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/primary"
-            android:text="@string/paste"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
             android:textColor="@color/white"
-            app:iconTint="@color/white" />
+            app:backgroundTint="#2196F3"
+            app:icon="@drawable/copy_svgrepo_com"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
+            app:shapeAppearanceOverlay="@style/one_rounded" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonDownload"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/download"
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            app:shapeAppearanceOverlay="@style/one_rounded"
+            app:strokeWidth="0dp" />
 
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
