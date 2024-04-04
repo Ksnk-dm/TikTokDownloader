@@ -46,7 +46,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                     return@setOnClickListener
                 }
                 customEndIcon.text?.let { text ->
-                    if (checkContainsUrl(text.toString(), customEndIcon)) {
+                    if (!checkContainsUrl(text.toString(), customEndIcon)) {
                         Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
