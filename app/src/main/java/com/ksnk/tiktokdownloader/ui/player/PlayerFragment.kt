@@ -20,7 +20,7 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
 
     private val viewBinding by viewBinding(FragmentPlayerBinding::bind)
     private var player: ExoPlayer? = null
-    private var isAllFabsVisible: Boolean = false
+    private var isAllFabVisible: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,40 +29,49 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
             arguments?.getString(ShareFragment.KEY_FILE_URI)?.let { videoUri ->
                 hideBottomNav()
                 player = ExoPlayer.Builder(requireContext()).build()
-                viewBinding.playerView.player = player
+                playerView.player = player
                 player?.setMediaItem(MediaItem.fromUri(videoUri))
                 player?.prepare()
                 player?.play()
             }
 
-            viewBinding.playerView.setControllerVisibilityListener(PlayerView.ControllerVisibilityListener {
-                if (it == 0) viewBinding.floatingActionButton.visibility = View.VISIBLE
-                else viewBinding.floatingActionButton.visibility = View.GONE
+            playerView.setControllerVisibilityListener(PlayerView.ControllerVisibilityListener {
+                if (it == 0) {
+                    floatingActionButton.visibility = View.VISIBLE
+                    buttonBack.visibility = View.VISIBLE
+                } else {
+                    floatingActionButton.visibility = View.GONE
+                    floatingActionButtonDelete.visibility = View.GONE
+                    floatingActionButtonShare.visibility = View.GONE
+                    buttonBack.visibility = View.GONE
+                }
             })
 
-            arguments?.getString("fileName")?.let { name ->
-               floatingActionButtonShare.setOnClickListener {
+            arguments?.getString(KEY_FILE_NAME)?.let { name ->
+                floatingActionButtonShare.setOnClickListener {
                     player?.pause()
                     shareFile(File(DOWNLOAD_VIDEOS_DIRECTORY, name).absolutePath)
                 }
 
                 floatingActionButtonDelete.setOnClickListener {
-                    if (File(DOWNLOAD_VIDEOS_DIRECTORY, name).exists()){
-                        File(DOWNLOAD_VIDEOS_DIRECTORY, name).deleteRecursively()
-                    }
+                    if (File(DOWNLOAD_VIDEOS_DIRECTORY, name).exists()) File(DOWNLOAD_VIDEOS_DIRECTORY, name).deleteRecursively()
                     navigation.popBackStack()
                 }
             }
 
-            viewBinding.floatingActionButton.setOnClickListener {
-                if (!isAllFabsVisible) {
+            buttonBack.setOnClickListener {
+                navigation.popBackStack()
+            }
+
+            floatingActionButton.setOnClickListener {
+                isAllFabVisible = if (!isAllFabVisible) {
                     floatingActionButtonShare.show()
                     floatingActionButtonDelete.show()
-                    isAllFabsVisible = true
+                    true
                 } else {
                     floatingActionButtonShare.hide()
                     floatingActionButtonDelete.hide()
-                    isAllFabsVisible = false
+                    false
                 }
             }
         }
@@ -71,8 +80,7 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
     override fun onDestroy() {
         super.onDestroy()
         player?.stop()
-        viewBinding.playerView.setControllerVisibilityListener(PlayerView.ControllerVisibilityListener {
-        })
+        viewBinding.playerView.setControllerVisibilityListener(PlayerView.ControllerVisibilityListener {})
     }
 
     private fun shareFile(fileUri: String) {
@@ -90,5 +98,9 @@ class PlayerFragment : BaseFragment(R.layout.fragment_player) {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
         startActivity(Intent.createChooser(shareIntent, context?.getString(R.string.send_file_as)))
+    }
+
+    companion object {
+        private const val KEY_FILE_NAME = "fileName"
     }
 }

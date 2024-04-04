@@ -6,6 +6,20 @@
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBack"
+        style="@style/Widget.MaterialComponents.Button.IconOnly"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:backgroundTint="@color/primary"
+        app:icon="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -14,7 +28,7 @@
         android:layout_marginBottom="70dp"
         android:clickable="true"
         android:foregroundTint="#00FFFFFF"
-        android:tint="@color/primary"
+        app:tint="@android:color/white"
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +42,7 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:foregroundTint="#00FFFFFF"
-        android:tint="@color/primary"
+        app:tint="@android:color/white"
         android:visibility="gone"
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
@@ -44,7 +58,7 @@
         android:layout_marginBottom="16dp"
         android:clickable="true"
         android:foregroundTint="#00FFFFFF"
-        android:tint="@color/primary"
+        app:tint="@android:color/white"
         android:visibility="gone"
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButtonShare"

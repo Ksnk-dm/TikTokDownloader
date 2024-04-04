@@ -9,10 +9,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.ksnk.tiktokdownloader.events.DownloadEvent
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.base.BaseFragment
 import com.ksnk.tiktokdownloader.databinding.FragmentDownloadBinding
+import com.ksnk.tiktokdownloader.events.DownloadEvent
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -46,13 +46,8 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                     return@setOnClickListener
                 }
                 customEndIcon.text?.let { text ->
-                    if (!text.contains(CONTAINS, true)) {
-                        Toast.makeText(
-                            requireContext(),
-                            getText(R.string.bad_link),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        customEndIcon.setText("")
+                    if (checkContainsUrl(text.toString(), customEndIcon)) {
+                        Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
                 }
@@ -74,34 +69,15 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
             }
 
             buttonPaste.setOnClickListener {
-                if (!checkContainsUrl(
-                        viewModel.pasteFromClipboard(requireContext()),
-                        customEndIcon
-                    )
-                ) return@setOnClickListener
+                if (!checkContainsUrl(viewModel.pasteFromClipboard(requireContext()), customEndIcon)) return@setOnClickListener
                 customEndIcon.setText(viewModel.pasteFromClipboard(requireContext()))
             }
             buttonOpen.setOnClickListener {
-                if (!checkContainsUrl(
-                        customEndIcon.text.toString(),
-                        customEndIcon
-                    )
-                ) return@setOnClickListener
-                val intent = Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse(customEndIcon.text.toString())
-                ).setPackage(TIK_TOK_PACKAGE_NAME)
+                if (!checkContainsUrl(customEndIcon.text.toString(), customEndIcon)) return@setOnClickListener
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(customEndIcon.text.toString())).setPackage(TIK_TOK_PACKAGE_NAME)
 
-                if (context?.packageManager?.let { it ->
-                        intent.resolveActivity(it)
-                    } != null)
-                    startActivity(intent)
-                else startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse(customEndIcon.text.toString())
-                    )
-                )
+                if (context?.packageManager?.let { intent.resolveActivity(it) } != null) startActivity(intent)
+                else startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(customEndIcon.text.toString())))
             }
         }
     }
@@ -119,11 +95,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
     private fun checkContainsUrl(text: String?, editText: EditText): Boolean {
         text?.let {
             if (!it.contains(CONTAINS, true)) {
-                Toast.makeText(
-                    requireContext(),
-                    getText(R.string.bad_link),
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
                 editText.setText("")
                 return false
             }

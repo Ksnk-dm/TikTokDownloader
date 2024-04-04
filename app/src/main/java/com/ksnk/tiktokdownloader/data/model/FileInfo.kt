@@ -1,19 +1,19 @@
-package com.ksnk.tiktokdownloader.data.entity
+package com.ksnk.tiktokdownloader.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 
-data class FileEntity(
+data class FileInfo(
     @SerializedName("msg")
     val status: String?,
     @SerializedName("data")
-    val data: FileDataEntity?
+    val data: FileData?
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.readParcelable(FileDataEntity::class.java.classLoader)
+        parcel.readParcelable(FileData::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -23,11 +23,11 @@ data class FileEntity(
 
     override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<FileEntity> {
-        override fun createFromParcel(parcel: Parcel): FileEntity =
-            FileEntity(parcel)
+    companion object CREATOR : Parcelable.Creator<FileInfo> {
+        override fun createFromParcel(parcel: Parcel): FileInfo =
+            FileInfo(parcel)
 
-        override fun newArray(size: Int): Array<FileEntity?> =
+        override fun newArray(size: Int): Array<FileInfo?> =
             arrayOfNulls(size)
     }
 }

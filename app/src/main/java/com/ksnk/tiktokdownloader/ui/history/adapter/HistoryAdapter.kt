@@ -1,23 +1,18 @@
 package com.ksnk.tiktokdownloader.ui.history.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
 import com.ksnk.tiktokdownloader.R
+import com.ksnk.tiktokdownloader.data.model.Media
 import com.ksnk.tiktokdownloader.databinding.ItemHistoryBinding
-import com.ksnk.tiktokdownloader.ui.MediaModel
 import com.ksnk.tiktokdownloader.utils.Navigation
-import java.io.File
-import java.security.AccessController.getContext
 
 
 class HistoryAdapter(
-    private val items: List<MediaModel>,
+    private val items: List<Media>,
     private val context: Context,
     private val navigation: Navigation
 ) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
@@ -38,7 +33,7 @@ class HistoryAdapter(
         private val navigation: Navigation
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MediaModel) {
+        fun bind(item: Media) {
             Glide.with(context).load(item.uri).error(R.drawable.rounded_corners).into(binding.imageViewCover)
             binding.textViewDuration.text = item.duration
             binding.textViewSize.text = item.size

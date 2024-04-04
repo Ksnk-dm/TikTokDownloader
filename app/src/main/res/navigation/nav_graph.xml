@@ -20,7 +20,7 @@
                 app:argType="string" />
             <argument
                 android:name="fileEntity"
-                app:argType="com.ksnk.tiktokdownloader.data.entity.FileEntity" />
+                app:argType="com.ksnk.tiktokdownloader.data.model.FileInfo" />
         </action>
         <action
             android:id="@+id/action_downloadFragment_to_historyFragment"
@@ -57,6 +57,9 @@
                 android:name="fileName"
                 app:argType="string" />
         </action>
+        <action
+            android:id="@+id/action_historyFragment_to_permissionFragment"
+            app:destination="@id/permissionFragment" />
     </fragment>
 
     <fragment
@@ -64,4 +67,14 @@
         android:name="com.ksnk.tiktokdownloader.ui.player.PlayerFragment"
         android:label="Fragment Player"
         tools:layout="@layout/fragment_player" />
+
+    <fragment
+        android:id="@+id/permissionFragment"
+        android:name="com.ksnk.tiktokdownloader.ui.permission.PermissionFragment"
+        android:label="Fragment Permission"
+        tools:layout="@layout/fragment_permission" >
+        <action
+            android:id="@+id/action_permissionFragment_to_downloadFragment"
+            app:destination="@id/downloadFragment" />
+    </fragment>
 </navigation>
