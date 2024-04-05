@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="set_url">Добавьте ссылку</string>
+    <string name="paste">Вставить</string>
+    <string name="download">Скачать</string>
+    <string name="share">Поделиться</string>
+    <string name="send_file_as">Отправить файл через:</string>
+    <string name="history">История</string>
+    <string name="empty_url">Введите ссылку для загрузки</string>
+    <string name="bad_link">Ссылка не поддерживается</string>
+    <string name="home">Главная</string>
+    <string name="open">Открыть ссылку</string>
+    <string name="allow_permission">Доступ к памяти</string>
+    <string name="allow_permission_title">Разрешить доступ к медиафайлам</string>
+    <string name="allow_permission_description">Для отображения истории необходимо предоставить разрешение на доступ к файловой системе.</string>
+    <string name="allow">Разрешить</string>
+</resources>
