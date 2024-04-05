@@ -30,6 +30,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         super.onViewCreated(view, savedInstanceState)
         showButtonNav()
         with(viewBinding) {
+            adView.loadAd(initAdmob())
             activity?.intent?.let { text ->
                 text.getStringExtra(Intent.EXTRA_TEXT)?.let {
                     customEndIcon.setText(it)
@@ -45,6 +46,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                     ).show()
                     return@setOnClickListener
                 }
+
                 customEndIcon.text?.let { text ->
                     if (!checkContainsUrl(text.toString(), customEndIcon)) {
                         Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
@@ -56,6 +58,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
+                            mInterstitialAd?.show(requireActivity())
                             navigation.openShareFragmentFromDownload(
                                 viewModel.downloadVideo(
                                     fileEntity,

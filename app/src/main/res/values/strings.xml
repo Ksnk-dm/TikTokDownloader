@@ -11,4 +11,8 @@
     <string name="bad_link">Лінка не підримується</string>
     <string name="home">Головна</string>
     <string name="open">Відкрити посилання</string>
+    <string name="allow_permission">Доступ до пам\'яті</string>
+    <string name="allow_permission_title">Дозволити доступ до медіа файлів</string>
+    <string name="allow_permission_description">Для відображення історії потрібно надати дозвіл на доступ до файлової системи.</string>
+    <string name="allow">Дозвіл</string>
 </resources>
