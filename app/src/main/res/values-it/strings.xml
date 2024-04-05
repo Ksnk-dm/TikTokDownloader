@@ -13,6 +13,6 @@
     <string name="open">Apri link</string>
     <string name="allow_permission">Permesso di accesso alla memoria</string>
     <string name="allow_permission_title">Consenti l\'accesso ai file multimediali</string>
-    <string name="allow_permission_description">Per visualizzare la cronologia è necessario concedere l\'autorizzazione all'accesso al filesystem.</string>
+    <string name="allow_permission_description">Per visualizzare la cronologia è necessario concedere l\'autorizzazione all\'accesso al filesystem.</string>
     <string name="allow">Consenti</string>
 </resources>
