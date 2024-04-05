@@ -47,7 +47,7 @@
         app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/share_svgrepo_com"
+        app:srcCompat="@drawable/ic_share"
         tools:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

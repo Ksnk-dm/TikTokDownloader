@@ -20,7 +20,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
         super.onViewCreated(view, savedInstanceState)
         hideBottomNav()
         with(viewBinding) {
-
+            mInterstitialAd?.show(requireActivity())
             val jsonString = arguments?.getParcelable<FileInfo>(KEY_FILE_ENTITY)
 
             Glide.with(requireContext())
@@ -44,7 +44,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
             }
 
             buttonPlay.setOnClickListener {
-                navigation.openPlayerFragmentFromShare(jsonString?.data?.playUrl.toString())
+                navigation.openPlayerFragmentFromShare(jsonString?.data?.playUrl.toString(), false)
             }
         }
     }

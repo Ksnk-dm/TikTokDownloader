@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">Agregar enlace</string>
+    <string name="paste">Pegar</string>
+    <string name="download">Descargar</string>
+    <string name="share">Compartir</string>
+    <string name="send_file_as">Enviar archivo como:</string>
+    <string name="history">Historial</string>
+    <string name="empty_url">Ingrese un enlace para descargar</string>
+    <string name="bad_link">Enlace no compatible</string>
+    <string name="home">Inicio</string>
+    <string name="open">Abrir enlace</string>
+    <string name="allow_permission">Permiso de acceso a la memoria</string>
+    <string name="allow_permission_title">Permitir acceso a archivos multimedia</string>
+    <string name="allow_permission_description">Para mostrar el historial, es necesario otorgar permiso de acceso al sistema de archivos.</string>
+    <string name="allow">Permitir</string>
+</resources>

@@ -38,6 +38,9 @@
             <argument
                 android:name="fileUri"
                 app:argType="string" />
+            <argument
+                android:name="showButton"
+                app:argType="boolean" />
         </action>
     </fragment>
 

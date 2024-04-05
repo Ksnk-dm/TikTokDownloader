@@ -17,8 +17,8 @@ class Navigation(private val navHostFragment: NavHostFragment) {
     fun openPlayerFragmentFromHistory(fileUri: String, fileName: String) =
         getNavController().navigate(HistoryFragmentDirections.actionHistoryFragmentToPlayerFragment(fileUri, fileName))
 
-    fun openPlayerFragmentFromShare(fileUri: String) =
-        getNavController().navigate(ShareFragmentDirections.actionShareFragmentToPlayerFragment(fileUri))
+    fun openPlayerFragmentFromShare(fileUri: String, showButton: Boolean = true) =
+        getNavController().navigate(ShareFragmentDirections.actionShareFragmentToPlayerFragment(fileUri, showButton))
 
     fun openPermissionFragmentFromHistory() =
         getNavController().navigate(HistoryFragmentDirections.actionHistoryFragmentToPermissionFragment())

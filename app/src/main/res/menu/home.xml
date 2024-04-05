@@ -5,12 +5,12 @@
         android:id="@+id/downloadFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/home_svgrepo_com"
+        android:icon="@drawable/ic_home"
         android:title="@string/home" />
     <item
         android:id="@+id/historyFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/download_minimalistic_svgrepo_com"
+        android:icon="@drawable/ic_download"
         android:title="@string/history" />
 </menu>

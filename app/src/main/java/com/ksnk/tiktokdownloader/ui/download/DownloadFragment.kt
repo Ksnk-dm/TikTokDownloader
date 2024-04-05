@@ -30,14 +30,15 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
         super.onViewCreated(view, savedInstanceState)
         showButtonNav()
         with(viewBinding) {
+            adView.loadAd(initAdmob())
             activity?.intent?.let { text ->
                 text.getStringExtra(Intent.EXTRA_TEXT)?.let {
-                    customEndIcon.setText(it)
+                    editTextUrl.setText(it)
                 }
             }
 
             buttonDownload.setOnClickListener {
-                if (customEndIcon.text.isNullOrEmpty()) {
+                if (editTextUrl.text.isNullOrEmpty()) {
                     Toast.makeText(
                         requireContext(),
                         getText(R.string.empty_url),
@@ -45,17 +46,19 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                     ).show()
                     return@setOnClickListener
                 }
-                customEndIcon.text?.let { text ->
-                    if (checkContainsUrl(text.toString(), customEndIcon)) {
+
+                editTextUrl.text?.let { text ->
+                    if (!checkContainsUrl(text.toString(), editTextUrl)) {
                         Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
                 }
                 isFileDownloaded = false
-                viewModel.expandShortenedUrl(customEndIcon.text.toString())
+                viewModel.expandShortenedUrl(editTextUrl.text.toString())
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
+                            mInterstitialAd?.show(requireActivity())
                             navigation.openShareFragmentFromDownload(
                                 viewModel.downloadVideo(
                                     fileEntity,
@@ -65,19 +68,19 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                             isFileDownloaded = true
                         }
                     }
-                customEndIcon.setText("")
+                editTextUrl.setText("")
             }
 
             buttonPaste.setOnClickListener {
-                if (!checkContainsUrl(viewModel.pasteFromClipboard(requireContext()), customEndIcon)) return@setOnClickListener
-                customEndIcon.setText(viewModel.pasteFromClipboard(requireContext()))
+                if (!checkContainsUrl(viewModel.pasteFromClipboard(requireContext()), editTextUrl)) return@setOnClickListener
+                editTextUrl.setText(viewModel.pasteFromClipboard(requireContext()))
             }
             buttonOpen.setOnClickListener {
-                if (!checkContainsUrl(customEndIcon.text.toString(), customEndIcon)) return@setOnClickListener
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(customEndIcon.text.toString())).setPackage(TIK_TOK_PACKAGE_NAME)
+                if (!checkContainsUrl(editTextUrl.text.toString(), editTextUrl)) return@setOnClickListener
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(editTextUrl.text.toString())).setPackage(TIK_TOK_PACKAGE_NAME)
 
                 if (context?.packageManager?.let { intent.resolveActivity(it) } != null) startActivity(intent)
-                else startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(customEndIcon.text.toString())))
+                else startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(editTextUrl.text.toString())))
             }
         }
     }

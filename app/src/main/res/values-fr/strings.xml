@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">Ajouter un lien</string>
+    <string name="paste">Coller</string>
+    <string name="download">Télécharger</string>
+    <string name="share">Partager</string>
+    <string name="send_file_as">Envoyer le fichier via :</string>
+    <string name="history">Historique</string>
+    <string name="empty_url">Entrez un lien pour le téléchargement</string>
+    <string name="bad_link">Lien non pris en charge</string>
+    <string name="home">Accueil</string>
+    <string name="open">Ouvrir le lien</string>
+    <string name="allow_permission">Autorisation d\'accès à la mémoire</string>
+    <string name="allow_permission_title">Autoriser l\'accès aux fichiers multimédias</string>
+    <string name="allow_permission_description">Pour afficher l\'historique, il est nécessaire de fournir l\'autorisation d\'accès au système de fichiers.</string>
+    <string name="allow">Autoriser</string>
+</resources>

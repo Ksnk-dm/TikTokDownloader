@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ksnk.tiktokdownloader"
-        minSdk = 28
+        minSdk = 30
         targetSdk = 34
         versionCode = 3
         versionName = "1.3"
@@ -111,4 +111,5 @@ dependencies {
     implementation ("androidx.media3:media3-exoplayer-dash:1.3.0")
     implementation ("androidx.media3:media3-ui:1.3.0")
 
+    implementation ("com.google.android.gms:play-services-ads:23.0.0")
 }
