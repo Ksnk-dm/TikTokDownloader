@@ -29,7 +29,7 @@ class HistoryFragment : BaseFragment(R.layout.fragment_history) {
         getPermissionAccess()
 
         with(viewBinding) {
-
+            adView.loadAd(initAdmob())
             lifecycleScope.launch {
                 recyclerViewHistory.adapter = HistoryAdapter(
                     viewModel.getVideosFromFolder(

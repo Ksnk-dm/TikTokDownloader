@@ -22,7 +22,13 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MobileAds.initialize(requireContext()) {}
+        MobileAds.initialize(requireContext())
+        loadAds()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MobileAds.initialize(requireContext())
         loadAds()
     }
 
@@ -43,7 +49,7 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
          AdRequest.Builder().build()
 
     private fun loadAds() {
-        val adRequest = AdRequest.Builder().build()
+        val adRequest = initAdmob()
 
         InterstitialAd.load(requireContext(), AD_ID, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -52,7 +58,6 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
                 mInterstitialAd = interstitialAd
-                loadAds()
             }
         })
 
