@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">Ավելացնել հղում</string>
+    <string name="paste">Կրկնել</string>
+    <string name="download">Ներբեռնել</string>
+    <string name="share">Կիսվել</string>
+    <string name="send_file_as">Ուղարկեք ֆայլը ումերին:</string>
+    <string name="history">Պատմություն</string>
+    <string name="empty_url">Մուտքագրեք հղումը բերելու համար</string>
+    <string name="bad_link">Հղումը չի աջակցվում</string>
+    <string name="home">Գլխավոր</string>
+    <string name="open">Բացել հղումը</string>
+    <string name="allow_permission">Տեղեկատվություն տրամադրեք</string>
+    <string name="allow_permission_title">Հավելվածատեսական ֆայլերին մուտքի առնելիս տեղեկատվություն տրամադրեք</string>
+    <string name="allow_permission_description">Պատմությունը տեսնելու համար ֆայլային համակարգի մուտքի առնելիս լիցենզ տալը պահանջվում է:</string>
+    <string name="allow">Դիմել լիցենզ</string>
+</resources>

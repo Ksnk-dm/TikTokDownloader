@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="set_url">Lisa link</string>
+    <string name="paste">Kleepige</string>
+    <string name="download">Laadi alla</string>
+    <string name="share">Jaga</string>
+    <string name="send_file_as">Saada failina:</string>
+    <string name="history">Ajalugu</string>
+    <string name="empty_url">Sisestage allalaadimiseks link</string>
+    <string name="bad_link">Linki ei toetata</string>
+    <string name="home">Kodu</string>
+    <string name="open">Ava link</string>
+    <string name="allow_permission">Luba juurdepääs</string>
+    <string name="allow_permission_title">Andke juurdepääs meediafailidele</string>
+    <string name="allow_permission_description">Ajaloo kuvamiseks peate failisüsteemile juurdepääsu lubama.</string>
+    <string name="allow">Luba</string>
+</resources>

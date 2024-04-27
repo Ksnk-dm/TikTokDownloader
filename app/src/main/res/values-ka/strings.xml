@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">ბმულის დამატება</string>
+    <string name="paste">ჩასმა</string>
+    <string name="download">ჩამოტვირთვა</string>
+    <string name="share">გაზიარება</string>
+    <string name="send_file_as">ფაილის გადაგზავნა:</string>
+    <string name="history">ისტორია</string>
+    <string name="empty_url">შეიყვანეთ ბმული ჩამოსატვირთად</string>
+    <string name="bad_link">ბმული არ მხარდაჭერილია</string>
+    <string name="home">მთავარი</string>
+    <string name="open">ბმულის გახსნა</string>
+    <string name="allow_permission">წვდომის ნებართვა</string>
+    <string name="allow_permission_title">მედია ფაილებზე წვდომის ნებართვა</string>
+    <string name="allow_permission_description">ისტორიის ნახვათან ერთად, სურვილისამებრ ფაილებზე წვდომა მისაწვდომი უნდა იყოს.</string>
+    <string name="allow">ნებართვა</string>
+</resources>
