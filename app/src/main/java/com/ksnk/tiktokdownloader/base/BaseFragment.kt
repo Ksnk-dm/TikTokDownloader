@@ -1,6 +1,7 @@
 package com.ksnk.tiktokdownloader.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
@@ -18,18 +19,12 @@ import org.koin.core.parameter.parametersOf
 abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
 
     val navigation: Navigation by inject { parametersOf(requireParentFragment()) }
-    var mInterstitialAd: InterstitialAd? = null
+    //var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MobileAds.initialize(requireContext())
-        loadAds()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        MobileAds.initialize(requireContext())
-        loadAds()
+       // loadAds()
     }
 
     fun setBlackColorInStatusBar() {
@@ -48,24 +43,19 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
     fun initAdmob(): AdRequest =
          AdRequest.Builder().build()
 
-    private fun loadAds() {
-        val adRequest = initAdmob()
+    fun loadAds() {
 
-        InterstitialAd.load(requireContext(), AD_ID, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(requireContext(), AD_ID, initAdmob(), object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
-                mInterstitialAd = null
+              Log.d("MESSAGE::: ", adError.toString())
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                mInterstitialAd = interstitialAd
+               // mInterstitialAd = interstitialAd
+                interstitialAd.show(requireActivity())
             }
         })
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mInterstitialAd = null
     }
 
     companion object {

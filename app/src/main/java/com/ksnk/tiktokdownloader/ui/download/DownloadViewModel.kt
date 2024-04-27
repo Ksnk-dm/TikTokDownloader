@@ -24,6 +24,7 @@ class DownloadViewModel(
 ) : BaseViewModel(application) {
 
     private val expandedUrlLiveData = repository.fileInfoModelLiveData()
+
     fun getExpandedUrlLiveData(): LiveData<FileInfo> =
         expandedUrlLiveData
 

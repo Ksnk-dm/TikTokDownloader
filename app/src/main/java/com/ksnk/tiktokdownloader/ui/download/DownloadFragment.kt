@@ -29,6 +29,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showButtonNav()
+        initAdmob()
         with(viewBinding) {
             adView.loadAd(initAdmob())
             activity?.intent?.let { text ->
@@ -38,6 +39,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
             }
 
             buttonDownload.setOnClickListener {
+
                 if (editTextUrl.text.isNullOrEmpty()) {
                     Toast.makeText(
                         requireContext(),
@@ -47,6 +49,7 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                     return@setOnClickListener
                 }
 
+                loadAds()
                 editTextUrl.text?.let { text ->
                     if (!checkContainsUrl(text.toString(), editTextUrl)) {
                         Toast.makeText(requireContext(), getText(R.string.bad_link), Toast.LENGTH_SHORT).show()
@@ -58,7 +61,6 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
-                            mInterstitialAd?.show(requireActivity())
                             navigation.openShareFragmentFromDownload(
                                 viewModel.downloadVideo(
                                     fileEntity,
