@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">Сілтемені енгізіңіз</string>
+    <string name="paste">Қойыңыз</string>
+    <string name="download">Жүктеп алу</string>
+    <string name="share">Бөлісу</string>
+    <string name="send_file_as">Файлды көзету:</string>
+    <string name="history">Тарих</string>
+    <string name="empty_url">Жүктеу үшін сілтеме енгізіңіз</string>
+    <string name="bad_link">Қолданылуға мұқият емес сілтеме</string>
+    <string name="home">Басты бет</string>
+    <string name="open">Сілтемені ашу</string>
+    <string name="allow_permission">Кіру рұқсаты беру</string>
+    <string name="allow_permission_title">Медиа файлдарға кіруге рұқсат беру</string>
+    <string name="allow_permission_description">Тарихты көру үшін файл жүйесіне кіруге рұқсат керек.</string>
+    <string name="allow">Рұқсат беру</string>
+</resources>

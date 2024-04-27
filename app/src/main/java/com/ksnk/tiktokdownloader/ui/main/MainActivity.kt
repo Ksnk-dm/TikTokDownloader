@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.gms.ads.MobileAds
 import com.ksnk.tiktokdownloader.R
 import com.ksnk.tiktokdownloader.databinding.ActivityMainBinding
 import com.ksnk.tiktokdownloader.utils.Navigation
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        MobileAds.initialize(this) {}
         with(viewBinding) {
             bottomNavigationView.setupWithNavController(navigation.getNavController())
 

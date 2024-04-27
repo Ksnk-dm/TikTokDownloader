@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="set_url">Link əlavə edin</string>
+    <string name="paste">Yapışdır</string>
+    <string name="download">Yüklə</string>
+    <string name="share">Paylaş</string>
+    <string name="send_file_as">Faylı göndər:</string>
+    <string name="history">Tarix</string>
+    <string name="empty_url">Yükləmək üçün bir link daxil edin</string>
+    <string name="bad_link">Link dəstəklənmir</string>
+    <string name="home">Əsas səhifə</string>
+    <string name="open">Bağlantı aç</string>
+    <string name="allow_permission">Yaddaşa icazə verin</string>
+    <string name="allow_permission_title">Media fayllarına giriş icazəsi verin</string>
+    <string name="allow_permission_description">Tarixi görmək üçün fayl sisteməsini daxil etmək üçün icazə verilməlidir.</string>
+    <string name="allow">İcazə ver</string>
+</resources>

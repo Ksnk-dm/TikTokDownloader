@@ -19,7 +19,7 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideBottomNav()
-        mInterstitialAd?.show(requireActivity())
+        //loadAds()
         with(viewBinding) {
             val jsonString = arguments?.getParcelable<FileInfo>(KEY_FILE_ENTITY)
 
@@ -66,11 +66,6 @@ class ShareFragment : BaseFragment(R.layout.fragment_share) {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
         startActivity(Intent.createChooser(shareIntent, context?.getString(R.string.send_file_as)))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        mInterstitialAd = null
     }
 
     companion object {
