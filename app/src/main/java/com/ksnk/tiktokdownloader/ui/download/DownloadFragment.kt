@@ -17,6 +17,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.koin.android.ext.android.inject
+import timber.log.Timber
 import java.io.File
 
 class DownloadFragment : BaseFragment(R.layout.fragment_download) {
@@ -61,13 +62,19 @@ class DownloadFragment : BaseFragment(R.layout.fragment_download) {
                 viewModel.getExpandedUrlLiveData()
                     .observe(viewLifecycleOwner) { fileEntity ->
                         if (!isFileDownloaded) {
-                            navigation.openShareFragmentFromDownload(
-                                viewModel.downloadVideo(
-                                    fileEntity,
-                                    requireContext()
-                                )?.absolutePath.toString(), fileEntity
-                            )
-                            isFileDownloaded = true
+                            runCatching {
+                                navigation.openShareFragmentFromDownload(
+                                    viewModel.downloadVideo(
+                                        fileEntity,
+                                        requireContext()
+                                    )?.absolutePath.toString(), fileEntity
+                                )
+                                isFileDownloaded = true
+                            }.onFailure {
+                                Toast.makeText(requireContext(), getString(R.string.bad_link), Toast.LENGTH_SHORT).show()
+                                Timber.e("error")
+                            }
+
                         }
                     }
                 editTextUrl.setText("")
